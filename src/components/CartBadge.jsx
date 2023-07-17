@@ -1,11 +1,35 @@
-import { useCart } from "../context/Cart/CartContext"
+import { useState, useRef, useEffect } from "react";
+import { useCart } from "../context/Cart/CartContext";
+import CartDropdown from "./CartDropdown";
 export default function CartBadge() {
-    const {cart} = useCart();
+  const [openCart, setOpenCart] = useState(false);
+  const cartRef = useRef(null);
+  const { cart } = useCart();
+
+  function handleOutsideClick(e) {
+    if (!cartRef.current.contains(e.target)) {
+      setOpenCart(false);
+    }
+  }
+  useEffect(() => {
+    window.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
+  function handleToggle() {
+    setOpenCart((openCart) => !openCart);
+  }
+
   return (
-    <>
+    <div className="relative">
       <button
+        ref={cartRef}
         type="button"
         className="relative inline-flex items-center p-3 text-sm font-medium text-center text-white bg-[#ABDFF1] rounded-lg hover:shadow-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#0C4A60] dark:hover:bg-[#ABDFF1]"
+        onClick={handleToggle}
       >
         <svg
           stroke="currentColor"
@@ -25,6 +49,12 @@ export default function CartBadge() {
           {cart.length}
         </div>
       </button>
-    </>
+      <div
+        className="absolute top-[45px] right-[30px] z-20 bg-[#ABDFF1] shadow-2xl rounded-md "
+        onClick={handleToggle}
+      >
+        {openCart && <CartDropdown />}
+      </div>
+    </div>
   );
 }

@@ -55,3 +55,7 @@ th {
   background: #8884d8;
   color: whitesmoke;
 }
+.cart-dropdown:nth-child(odd) {
+  background-color: #8884d8;
+  color: whitesmoke;
+}
