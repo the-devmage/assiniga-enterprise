@@ -7,6 +7,7 @@ import { formatCurrency } from "../utils/helpers/formatCurrency";
 import { apiOrders } from "../services/apiOrders";
 import Modal from "./Modal";
 import CheckoutSuccess from "./CheckoutSuccess";
+import CheckoutFooter from "./CheckoutFooter";
 
 export default function CheckoutInfo() {
   const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
@@ -32,18 +33,10 @@ export default function CheckoutInfo() {
 
   return (
     <>
-      <ul className="w-[40%] ">
-        <li className="flex justify-between my-4 p-4 border-b border-[#0C4A60] ">
-          <span className="font-medium">Total items:</span>
-          <span className="font-semibold">{totalQuantity}</span>
-        </li>
-        <li className="flex justify-between my-4  p-4 border-b border-[#0C4A60]">
-          <span className="font-medium ">Total Cost:</span>
-          <span className="font-semibold text-xl ">
-            {formatCurrency(totalPrice)}
-          </span>
-        </li>
-      </ul>
+      <CheckoutFooter
+        totalPrice={totalPrice}
+        totalQuantity={totalQuantity}
+      ></CheckoutFooter>
       <button
         className="bg-[#0C4A60] hover:shadow-lg transition-all rounded-md tracking-wider text-gray-100 px-10 py-3"
         onClick={handleCheckout}

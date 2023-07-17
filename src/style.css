@@ -59,3 +59,13 @@ th {
   background-color: #8884d8;
   color: whitesmoke;
 }
+
+.users-layout {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1fr 1.5fr;
+}
+
+.invoice-layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+}

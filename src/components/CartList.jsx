@@ -1,11 +1,6 @@
 import { RiDeleteBin2Line } from "react-icons/ri";
 
-export default function CartList({
-  product,
-  totalPrice,
-  totalQuantity,
-  dispatch,
-}) {
+export default function CartList({ product, dispatch }) {
   // updating the cart items
   function handleUpdate(e) {
     dispatch({
@@ -20,7 +15,7 @@ export default function CartList({
   }
 
   return (
-    <div className="grid grid-cols-checkout gap-x-[6rem] items-center px-5 py-3 border-b border-b-[#ABDFF1] hover:bg-[#ABDFF1] hover:rounded-md duration-300  ">
+    <div className="grid grid-cols-checkout gap-x-[2.4rem] items-center px-5 py-3 border-b border-b-[#ABDFF1] hover:bg-[#ABDFF1] hover:rounded-md duration-300  ">
       <img
         src={product.image}
         alt={product.image}
@@ -39,7 +34,7 @@ export default function CartList({
           <option key={num}>{num}</option>
         ))}
       </select>
-      <div className="">{product.price}</div>
+      <div>{product.price}</div>
       <div className="flex justify-center items-center cursor-pointer">
         <RiDeleteBin2Line
           size={"1.5em"}

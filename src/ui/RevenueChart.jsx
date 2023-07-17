@@ -8,12 +8,14 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { useState } from "react";
 import { useProduct } from "../context/ProductContext";
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import { sortedOrders } from "../utils/helpers/SortOrders";
 import DateFilter from "../components/DateFilter";
 
-export default function RevenueChart({sortBy, setSortBy}) {
+export default function RevenueChart() {
+  const [sortBy, setSortBy] = useState(7);
   const { orders } = useProduct();
   const newOrders = sortedOrders(orders);
 
@@ -33,7 +35,8 @@ export default function RevenueChart({sortBy, setSortBy}) {
     <>
       <header className="flex justify-between">
         <h2 className="font-bold mb-2 ">
-          Total Revenue from {format(allDates.at(0), "MMM dd")} - { format(allDates.at(-1), "MMM dd")}
+          Total Revenue from {format(allDates.at(0), "MMM dd")} -{" "}
+          {format(allDates.at(-1), "MMM dd")}
         </h2>
         <DateFilter sortBy={sortBy} setSortBy={setSortBy} />
       </header>

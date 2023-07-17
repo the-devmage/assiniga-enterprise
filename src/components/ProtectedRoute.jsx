@@ -18,6 +18,14 @@ export default function AuthenticatedContainer({ children }) {
     setLoading(false);
   }, [user, navigate]);
 
+  // useEffect(
+  //   function () {
+  //     if (!user && !loading) navigate("/");
+  //     setLoading(false);
+  //   },
+  //   [user, loading, navigate]
+  // );
+
   if (loading) {
     return <Loading height={"100vh"} bg={"#E0E7E9"} loadingSize={80} />;
   }
