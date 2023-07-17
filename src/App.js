@@ -14,6 +14,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Products from "./pages/Products";
 import Homepage from "./pages/Homepage";
 import Dashboard from "./pages/Dashboard";
+import Settings from "./pages/Settings";
+import Print from "./components/Print";
 
 function App() {
   return (
@@ -36,7 +38,8 @@ function App() {
                 <Route path="product" element={<Products />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="users" element={<Users />} />
-                <Route path="settings" element={<p>settings</p>} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="invoice" element={<Print />} />
               </Route>
 
               <Route path="*" element={<PageNotFound />} />

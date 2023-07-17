@@ -18,7 +18,7 @@ export default function Cart() {
               <div></div>
             </header>
 
-            <section className="first:border first:border-t mx-16 ">
+            <section className="first:border first:border-t mx-3 ">
               {cart.map((product, index) => (
                 <CartList key={index} product={product} dispatch={dispatch} />
               ))}

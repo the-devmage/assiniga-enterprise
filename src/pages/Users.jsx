@@ -1,29 +1,21 @@
-import { db } from "../firebase";
-import { collection, onSnapshot } from "firebase/firestore";
 import Modal from "../components/Modal";
 import UserInfo from "../components/UserInfo";
 import UserModal from "../components/UserModal";
 import { useState, useEffect } from "react";
 import Loading from "../components/Loading";
+import useFetch from "../hooks/useFetch";
 
 export default function Users() {
   const [modalOpen, setModalOpen] = useState(false);
   const [users, setUsers] = useState([]);
-  // async function getUsers() {
+  const { data, loading } = useFetch("users");
 
+  // async function getUsers() {
   useEffect(() => {
-    const fetchUser = () =>
-      onSnapshot(collection(db, "users"), (snapshot) => {
-        const newData = snapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        setUsers(newData);
-      });
-    return () => {
-      fetchUser();
-    };
-  }, []);
+    if (data) {
+      setUsers(data);
+    }
+  }, [data]);
 
   return (
     <>
@@ -37,33 +29,27 @@ export default function Users() {
             Add New User
           </button>
         </header>
-        <div className="overflow-x-auto">
-          <table className="w-full table-auto">
-            <thead className="text-left">
-              <tr>
-                <th className="py-6">Existing Users</th>
-                <th className="py-6">Contacts</th>
-                <th className="py-6">Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users ? (
-                users.map((user, index) => <UserInfo key={index} user={user} />)
-              ) : (
-                <tr>
-                  <td colSpan="3" className="text-center">
-                    <Loading height={"100%"} />
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
 
-        <Modal modalOpen={modalOpen} onClose={() => setModalOpen(false)}>
-          <UserModal />
-        </Modal>
+        <div className="flex flex-col ">
+          <header className="users-layout gap-x-[2.4rem] mb-2 mx-10 uppercase font-bold px-5 font-helvetica ">
+            <div></div>
+            <div>User</div>
+            <div>Contact</div>
+            <div>Email</div>
+          </header>
+
+          <section>
+            {loading && <Loading height={"100%"} />}
+            {users.map((user) => (
+              <UserInfo key={user.id} user={user} />
+            ))}
+          </section>
+        </div>
       </section>
+
+      <Modal modalOpen={modalOpen} onClose={() => setModalOpen(false)}>
+        <UserModal />
+      </Modal>
     </>
   );
 }
