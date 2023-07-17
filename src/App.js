@@ -1,24 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthContext } from "./context/AuthContext";
+import UserCartContext from "./context/Cart/CartContext";
+import ProductContext from "./context/ProductContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import "./style.css";
+import AppLayout from "./ui/AppLayout";
+import Welcome from "./pages/Welcome";
+import Users from "./pages/Users";
+import Cart from "./pages/Cart";
+import PageNotFound from "./pages/PageNotFound";
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Products from "./pages/Products";
+import Homepage from "./pages/Homepage";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthContext>
+      <UserCartContext>
+        <ProductContext>
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Welcome />} />
+              <Route
+                path="app"
+                element={
+                  <ProtectedRoute>
+                    <AppLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<Homepage />} />
+                <Route path="dashboard" element={<Dashboard />} />
+                <Route path="product" element={<Products />} />
+                <Route path="cart" element={<Cart />} />
+                <Route path="users" element={<Users />} />
+                <Route path="settings" element={<p>settings</p>} />
+              </Route>
+
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </BrowserRouter>
+          <ToastContainer
+            position="top-center"
+            autoClose={600}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            transition={Slide}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </ProductContext>
+      </UserCartContext>
+    </AuthContext>
   );
 }
 
