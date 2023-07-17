@@ -1,0 +1,57 @@
+.sidebar-list {
+  @apply w-[100%] cursor-pointer text-[#0C4A60] hover:bg-[#ABDFF1] rounded-md transition-all;
+}
+
+.product-btn {
+  @apply uppercase tracking-wide text-[12px] transition-all font-semibold block px-4 py-3 pt-4 hover:bg-[#ABDFF1];
+}
+body {
+  font-family: raleway;
+}
+h1,
+h2,
+h3,
+h4,
+th {
+  font-family: helvetica;
+}
+
+.product-img {
+  display: block;
+  width: 6.4rem;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  object-position: center center;
+  transform: scale(1.2) translateX(-7px);
+}
+.product-img:hover {
+  transform: scale(1.25) translateX(-7px);
+  transition: ease-in-out 300ms;
+}
+
+.sort-btn {
+  @apply hover:bg-[#559cb4] text-gray-800 hover:text-white transition-all px-2 rounded-md;
+}
+
+.selected {
+  background-color: #559cb4;
+  color: white;
+  cursor: not-allowed;
+}
+
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: 1.3fr 1fr;
+  column-gap: 30px;
+}
+
+.orders-layout {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 0.5fr 0.9fr;
+}
+
+.orders:nth-child(even) {
+  background: #8884d8;
+  color: whitesmoke;
+}
