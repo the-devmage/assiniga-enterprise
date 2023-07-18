@@ -30,7 +30,10 @@ export default function Invoice() {
           <h3>Unit Price</h3>
         </div>
         {cart.map((cart) => (
-          <div className="invoice-layout gap-[2rem] border-b border-gray-700 items-center py-1 ">
+          <div
+            key={cart.id}
+            className="invoice-layout gap-[2rem] border-b border-gray-700 items-center py-1 "
+          >
             <div className="flex flex-col ml-1 ">
               <p className="font-helvetica capitalize text-[16px] tracking-wide ">
                 {cart.name}
