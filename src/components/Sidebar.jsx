@@ -90,9 +90,12 @@ export default function Sidebar() {
             <span>Settings</span>
           </NavLink>
         </li>
-        <li className="sidebar-list flex items-center gap-3 px-6 py-3 ">
+        <li
+          className="sidebar-list flex items-center gap-3 px-6 py-3 "
+          onClick={handleSignOut}
+        >
           <FiLogOut />
-          <span onClick={handleSignOut}>Logout</span>
+          <span>Logout</span>
         </li>
       </ul>
       <div className="flex items-center gap-2 py-[6px] px-3 rounded-md bg-[#ABDFF1]  ">

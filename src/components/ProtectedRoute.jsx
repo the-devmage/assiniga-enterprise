@@ -17,7 +17,6 @@ export default function AuthenticatedContainer({ children }) {
     }
     setLoading(false);
   }, [user, navigate]);
-
   // useEffect(
   //   function () {
   //     if (!user && !loading) navigate("/");
