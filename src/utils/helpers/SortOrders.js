@@ -7,4 +7,3 @@ export const sortedOrders = (orders) => {
     return { ...order, createdAt };
   });
 };
-

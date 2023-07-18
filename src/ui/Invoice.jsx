@@ -6,7 +6,7 @@ import { sortedOrders } from "../utils/helpers/SortOrders";
 
 export default function Invoice() {
   const { orders } = useProduct();
-  const recentOrder = sortedOrders(orders).at(0);
+  const recentOrder = sortedOrders(orders)?.at(0);
   const { cart, totalPrice, totalQuantity } = recentOrder;
   const date = Date.now();
 
