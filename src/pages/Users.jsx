@@ -1,21 +1,15 @@
 import Modal from "../components/Modal";
 import UserInfo from "../components/UserInfo";
 import UserModal from "../components/UserModal";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Loading from "../components/Loading";
-import useFetch from "../hooks/useFetch";
+import { useUser } from "../context/user/UserContext";
 
 export default function Users() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [users, setUsers] = useState([]);
-  const { data, loading } = useFetch("users");
 
   // async function getUsers() {
-  useEffect(() => {
-    if (data) {
-      setUsers(data);
-    }
-  }, [data]);
+  const { users, loading } = useUser();
 
   return (
     <>

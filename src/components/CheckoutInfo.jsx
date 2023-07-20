@@ -3,7 +3,6 @@ import { db } from "../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import { cartSum } from "../utils/helpers/CartSum";
 import { useCart } from "../context/Cart/CartContext";
-import { formatCurrency } from "../utils/helpers/formatCurrency";
 import { apiOrders } from "../services/apiOrders";
 import Modal from "./Modal";
 import CheckoutSuccess from "./CheckoutSuccess";

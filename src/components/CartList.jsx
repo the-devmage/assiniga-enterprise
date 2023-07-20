@@ -15,7 +15,7 @@ export default function CartList({ product, dispatch }) {
   }
 
   return (
-    <div className="grid grid-cols-checkout gap-x-[2.4rem] items-center px-5 py-3 border-b border-b-[#ABDFF1] hover:bg-[#ABDFF1] hover:rounded-md duration-300  ">
+    <div className="grid grid-cols-checkout gap-x-[2.4rem] items-center px-5 py-4 border-b border-b-[#ABDFF1] hover:bg-[#ABDFF1] hover:rounded-md duration-300  ">
       <img
         src={product.image}
         alt={product.image}

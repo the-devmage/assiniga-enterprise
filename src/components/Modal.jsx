@@ -12,7 +12,9 @@ export default function Modal({ modalOpen, onClose, children }) {
       <div
         onClick={(e) => e.stopPropagation()}
         className={`bg-[#b7d4de] text-center rounded-xl p-6 h-[60%] ease-in-out duration-50 w-[50%] ${
-          modalOpen ? "scale-100 opacity-100 drop-shadow-xl z-[999]" : "scale-125 opacity-0"
+          modalOpen
+            ? "scale-100 opacity-100 drop-shadow-xl z-[999]"
+            : "scale-125 opacity-0"
         } `}
       >
         <div className="text-center w-[50vw] ">
@@ -21,7 +23,7 @@ export default function Modal({ modalOpen, onClose, children }) {
             onClick={onClose}
             className="absolute top-6 right-6 cursor-pointer "
           />
-          <div className="mx-auto my-4 w-[80%] h-[80%] relative "></div>
+          <div className="mx-auto my-4 w-[80%] h-[90%] relative "></div>
         </div>
         {React.cloneElement(children, { onClose })}
       </div>

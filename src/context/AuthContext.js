@@ -27,7 +27,7 @@ function AuthContext({ children }) {
   }
 
   // registering users and adding credential to the users database collection
-  async function addUser(name, contact, email, password) {
+  async function addUser(name, contact, location, email, password) {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -40,6 +40,7 @@ function AuthContext({ children }) {
     await addDoc(collection(db, "users"), {
       name,
       contact,
+      location,
       email,
       uid: userInfo.uid,
     });

@@ -5,17 +5,15 @@ import {
   BiSolidCartAdd,
 } from "react-icons/bi";
 import { FiLogOut, FiSettings, FiUsers } from "react-icons/fi";
+import { useUser } from "../context/user/UserContext";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
-import { nameInitials } from "../utils/helpers/NameInitials";
+import Loading from "./Loading";
 
 export default function Sidebar() {
-  // const navigate = useNavigate();
   const { logout } = useAuth();
+  const { currentUser, loading } = useUser();
 
-  //  destructuring user's name
-  const { user } = useAuth();
-  const { displayName } = user;
   // asynchronous function to log user out
   async function handleSignOut() {
     try {
@@ -25,7 +23,6 @@ export default function Sidebar() {
       toast.error("can't logout now");
     }
   }
-
   // active link style
 
   const activeLink =
@@ -99,10 +96,12 @@ export default function Sidebar() {
         </li>
       </ul>
       <div className="flex items-center gap-2 py-[6px] px-3 rounded-md bg-[#ABDFF1]  ">
+        {loading && <Loading height={"25px"} loadingSize={20} />}
+
         <div className="w-10 h-10 p-1 text-white flex justify-center items-center rounded-full bg-[#0C4A60]">
-          {nameInitials(displayName)}
+          {currentUser?.location.charAt(0)}
         </div>
-        <p>{displayName}</p>
+        <p>{currentUser?.location}</p>
       </div>
     </nav>
   );

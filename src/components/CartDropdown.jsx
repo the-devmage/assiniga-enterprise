@@ -16,7 +16,7 @@ export default function CartDropdown() {
         cart.map((product) => (
           <li
             key={product.id}
-            className="flex justify-between h-[45px] py-[5px] mb-1 border-b border-y-gray-600 "
+            className="flex justify-between min-h-[45px] py-[5px] mb-1 border-b border-y-gray-600 "
           >
             <div className=" h-full w-[55px] rounded-md">
               <img
