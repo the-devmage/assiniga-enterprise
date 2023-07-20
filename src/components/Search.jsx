@@ -8,7 +8,7 @@ export default function Search() {
     <>
       <form
         className={`w-50 md:${
-          isOpen ? "w-[50%]" : "md:w-[30%]"
+          isOpen ? "w-[50%]" : "w-[30%]"
         } md:transition md:ease-in-out md:delay-150 md:duration-700
  `}
       >
