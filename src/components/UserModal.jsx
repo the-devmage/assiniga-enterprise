@@ -2,11 +2,13 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { BiShow, BiHide } from "react-icons/bi";
 import { toast } from "react-toastify";
+import Loading from "./Loading";
 
 export default function UserModal({ onClose }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
+  const [location, setLocation] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -17,7 +19,7 @@ export default function UserModal({ onClose }) {
     setLoading(true);
 
     try {
-      await addUser(name, contact, email, password);
+      await addUser(name, contact, location, email, password);
       toast.success("added a new user!");
       setName("");
       setContact("");
@@ -36,30 +38,41 @@ export default function UserModal({ onClose }) {
       <h2 className="text-2xl font-bold ">Create New User</h2>
       <form
         onSubmit={handleSubmit}
-        className="h-[300px] flex flex-col justify-center gap-6 items-center mt-4 "
+        className="h-[80%] flex flex-col justify-center gap-6 items-center mt-4 "
       >
         <input
-          className="bg-transparent rounded-lg border-[1px] border-[#0C4A60] outline-[#0C4A60] w-[100%] h-12 px-6 text-[14px] "
+          className="bg-transparent rounded-lg border-[1px] border-[#0C4A60] outline-[#0C4A60] w-[80%] h-12 px-6 text-[14px] "
           type="text"
+          required
           placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
-          className="bg-transparent rounded-lg border-[1px] border-[#0C4A60] outline-[#0C4A60] w-[100%] h-12 px-6 text-[14px] "
+          className="bg-transparent rounded-lg border-[1px] border-[#0C4A60] outline-[#0C4A60] w-[80%] h-12 px-6 text-[14px] "
           type="text"
+          required
           placeholder="Contact"
           value={contact}
           onChange={(e) => setContact(e.target.value)}
         />
         <input
-          className="bg-transparent rounded-lg border-[1px] border-[#0C4A60] outline-[#0C4A60] w-[100%] h-12 px-6 text-[14px] "
+          className="bg-transparent rounded-lg border-[1px] border-[#0C4A60] outline-[#0C4A60] w-[80%] h-12 px-6 text-[14px] "
+          type="text"
+          required
+          placeholder="Location"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <input
+          className="bg-transparent rounded-lg border-[1px] border-[#0C4A60] outline-[#0C4A60] w-[80%] h-12 px-6 text-[14px] "
           placeholder="Email"
+          required
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <div className="relative w-[100%] h-12 ">
+        <div className="relative w-[80%] h-12 ">
           <input
             className="bg-transparent rounded-lg border-[1px] border-[#0C4A60] outline-[#0C4A60] w-[100%] h-full px-6 text-[14px] "
             type={`${showPassword ? "text" : "password"}`}
@@ -76,10 +89,14 @@ export default function UserModal({ onClose }) {
           </span>
         </div>
         <button
-          className="bg-[#ABDFF1] mt-8 rounded-lg border-[1px] border-[#0C4A60] h-10 px-6 place-self-end hover:shadow-md "
+          className="bg-[#ABDFF1] rounded-lg border-[1px] border-[#0C4A60] h-10 px-6 place-self-end hover:shadow-md "
           disabled={loading}
         >
-          {loading ? "Creating..." : "Create User"}
+          {loading ? (
+            <Loading height={"25px"} loadingSize={20} />
+          ) : (
+            "Create User"
+          )}
         </button>
       </form>
     </>

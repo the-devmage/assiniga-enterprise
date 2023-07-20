@@ -3,6 +3,7 @@ import { ref, getDownloadURL, uploadBytes } from "firebase/storage";
 import { db, storage } from "../firebase";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import Loading from "./Loading";
 
 export default function AddProduct({ onClose }) {
   const [name, setName] = useState("");
@@ -57,14 +58,7 @@ export default function AddProduct({ onClose }) {
     try {
       await uploadBytes(imageRef, productImage);
       const downloadURL = await getDownloadURL(imageRef);
-      await addProduct(
-        name,
-        price,
-        finalSize,
-        quantity,
-        category,
-        downloadURL
-      );
+      await addProduct(name, price, finalSize, quantity, category, downloadURL);
       toast.success("added a new product!");
       setName("");
       setSize("");
@@ -157,7 +151,11 @@ export default function AddProduct({ onClose }) {
           onChange={(e) => setPrice(e.target.value)}
         />
         <button className="bg-[#ABDFF1] rounded-lg shadow-lg w-[40%] h-12 px-6 hover:shadow-md ">
-          {loading ? "Adding..." : "Add Product"}
+          {loading ? (
+            <Loading height={"25px"} loadingSize={20} />
+          ) : (
+            "Add Product"
+          )}
         </button>
       </form>
     </>

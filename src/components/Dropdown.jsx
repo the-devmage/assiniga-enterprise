@@ -22,11 +22,11 @@ export default function Dropdown({ children, id }) {
 
   // detecting click outside dropdown
   function handleOutsideClick(e) {
+    e.stopPropagation();
     if (e.target !== menuRef.current && e.target !== optionRef.current) {
       setActiveDropdown(false);
     }
   }
-
 
   useEffect(() => {
     window.addEventListener("click", (e) => {

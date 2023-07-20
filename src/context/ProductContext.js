@@ -12,7 +12,7 @@ const FetchedProduct = createContext();
 
 export default function ProductContext({ children }) {
   const [products, setProducts] = useState([]);
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState();
   const [productState, productDispatch] = useReducer(productReducer, {
     all: true,
     building: false,

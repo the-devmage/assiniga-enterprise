@@ -3,7 +3,7 @@
 }
 
 .product-btn {
-  @apply uppercase tracking-wide text-[12px] transition-all font-semibold block px-4 py-3 pt-4 hover:bg-[#ABDFF1];
+  @apply uppercase tracking-wide text-[12px] transition-all font-semibold flex justify-center px-4 py-3 pt-4 hover:bg-[#ABDFF1];
 }
 body {
   font-family: raleway;
@@ -68,4 +68,24 @@ th {
 .invoice-layout {
   display: grid;
   grid-template-columns: 1.3fr 1fr 1fr;
+}
+input {
+  outline-color: #0c4a60;
+  outline-offset: none;
+}
+
+::-webkit-scrollbar {
+  height: 12px;
+  width: 8px;
+  background: #e3e8ea;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e8f7fb;
+  -webkit-border-radius: 2ex;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+}
+
+::-webkit-scrollbar-corner {
+  background: #000;
 }

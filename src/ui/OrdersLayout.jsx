@@ -18,19 +18,25 @@ export default function OrdersLayout() {
       <section className="border border-[#559cb4] rounded-md">
         {orderLoading && <Loading height={"100%"} />}
 
-        {recentOrders?.map((order) => (
-          <div className="orders-layout orders  px-2 py-[1px] items-center" key={order.id}>
-            <div className="text-[13px] ">{order.id.slice(0,-7)}***</div>
-            <div className="flex flex-col">
-              <p className="text-[13px]">{format(new Date(order.createdAt), "MMM dd")}</p>
-              <p className="text-[13px]">
-                {format(new Date(order.createdAt), "h m a")}
-              </p>
+        {orders &&
+          recentOrders?.map((order) => (
+            <div
+              className="orders-layout orders  px-2 py-[1px] items-center"
+              key={order.id}
+            >
+              <div className="text-[13px] ">{order.id.slice(0, -7)}***</div>
+              <div className="flex flex-col">
+                <p className="text-[13px]">
+                  {format(new Date(Number(order.createdAt)), "MMM dd")}
+                </p>
+                <p className="text-[13px]">
+                  {format(new Date(Number(order.createdAt)), "h m a")}
+                </p>
+              </div>
+              <div>{order.totalQuantity}</div>
+              <div>{formatCurrency(order.totalPrice)}</div>
             </div>
-            <div>{order.totalQuantity}</div>
-            <div>{formatCurrency(order.totalPrice)}</div>
-          </div>
-        ))}
+          ))}
       </section>
     </>
   );
