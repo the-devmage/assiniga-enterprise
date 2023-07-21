@@ -32,8 +32,8 @@ export default function AppLayout() {
           <Sidebar />
         </div>
       </aside>
-      <main className="md:col-span-10 h-[100%] border-[0.5px] border-[#0c4a6061] pt-2 overflow-auto">
-        <header className="pb-2 px-4 w-full flex justify-center items-center gap-20 border border-b-[#0c4a6061] relative mt-16 md:mt-0">
+      <main className="md:col-span-10 h-[100%] border  border-[#0c4a6023] pt-2 overflow-auto">
+        <header className="pb-2 px-4 w-full flex justify-center items-center gap-20 border border-b-[#0c4a6023] relative mt-16 md:mt-0">
           <div className="flex flex-grow justify-center">
             <Search />
           </div>

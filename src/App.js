@@ -17,6 +17,7 @@ import Homepage from "./pages/Homepage";
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Print from "./components/Print";
+import Records from "./pages/Records";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
                   <Route path="users" element={<Users />} />
                   <Route path="settings" element={<Settings />} />
                   <Route path="invoice" element={<Print />} />
+                  <Route path="records" element={<Records />} />
                 </Route>
 
                 <Route path="*" element={<PageNotFound />} />
