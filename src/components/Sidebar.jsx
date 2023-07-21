@@ -4,7 +4,9 @@ import {
   BiSolidShoppingBag,
   BiSolidCartAdd,
 } from "react-icons/bi";
-import { FiLogOut, FiSettings, FiUsers } from "react-icons/fi";
+import { FiLogOut, FiUsers } from "react-icons/fi";
+import { IoSettings } from "react-icons/io5";
+import { ImBooks } from "react-icons/im";
 import { useUser } from "../context/user/UserContext";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
@@ -31,7 +33,15 @@ export default function Sidebar() {
 
   return (
     <nav className="h-full flex flex-col justify-between p-2 pb-10">
-      <ul className="flex flex-col gap-4 ">
+      <div className="text-center lg:text-left uppercase text-xl font-bold flex flex-col gap-3 items-center">
+        <img
+          className="h-[40px] rounded-[50%] "
+          src="/images/logo.png"
+          alt="logo"
+        />
+        <p className="tracking-wider">Assiniga</p>
+      </div>
+      <ul className="flex flex-col gap-4 mt-[-10px] ">
         <li className="sidebar-list ">
           <NavLink
             to="dashboard"
@@ -41,6 +51,17 @@ export default function Sidebar() {
           >
             <BiSolidDashboard />
             <span>Dashboard</span>
+          </NavLink>
+        </li>
+        <li className="sidebar-list">
+          <NavLink
+            to="records"
+            className={({ isActive }) =>
+              isActive ? activeLink : "flex items-center gap-3 px-6 py-3 "
+            }
+          >
+            <ImBooks />
+            <span>Records</span>
           </NavLink>
         </li>
         <li className="sidebar-list">
@@ -83,7 +104,7 @@ export default function Sidebar() {
               isActive ? activeLink : "flex items-center gap-3 px-6 py-3 "
             }
           >
-            <FiSettings />
+            <IoSettings />
             <span>Settings</span>
           </NavLink>
         </li>
