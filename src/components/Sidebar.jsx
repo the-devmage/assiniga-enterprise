@@ -41,7 +41,7 @@ export default function Sidebar() {
         />
         <p className="tracking-wider">Assiniga</p>
       </div>
-      <ul className="flex flex-col gap-4 mt-[-10px] ">
+      <ul className="flex flex-col gap-4  ">
         <li className="sidebar-list ">
           <NavLink
             to="dashboard"
