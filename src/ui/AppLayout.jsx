@@ -13,7 +13,7 @@ export default function AppLayout() {
   }
 
   return (
-    <div className="bg-[#E0E7E9] md:grid md:grid-cols-12 h-[100vh] md:pr-10 md:py-8 relative">
+    <div className="bg-[#E0E7E9] md:grid md:grid-cols-12 m-0 min-h-[100vh] md:pr-10 md:py-8 relative">
       <aside
         className={`fixed z-20 md:relative top-0 left-0 md:col-span-2 md:row-span-full p-4 md:p-0 md:h-full bg-[#b3d2dd] md:bg-inherit ${
           hidden ? "w-full" : "w-full"
