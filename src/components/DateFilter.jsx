@@ -1,5 +1,4 @@
 export default function DateFilter({ sortBy, setSortBy }) {
-
   return (
     <div className="flex gap-1 bg-[#cff3fd] p-[2px] font-helvetica rounded-md ">
       <button
@@ -15,7 +14,7 @@ export default function DateFilter({ sortBy, setSortBy }) {
         Past 30 Days
       </button>
       <button
-        className={`sort-btn ${sortBy === 90 ? "selected" : ""}`}
+        className={`sort-btn ${sortBy === 365 ? "selected" : ""}`}
         onClick={() => setSortBy(365)}
       >
         Past year
