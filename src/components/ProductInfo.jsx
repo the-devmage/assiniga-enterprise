@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Modal from "./Modal";
 import UpdateProduct from "./UpdateProduct";
 import ProductActions from "./ProductActions";
@@ -11,9 +11,6 @@ import Dropdown from "./Dropdown";
 export default function ProductInfo({ product, handleDelete }) {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const menuRef = useRef();
-  const optionRef = useRef(false);
 
   const { cart, dispatch } = useCart();
 
@@ -26,25 +23,6 @@ export default function ProductInfo({ product, handleDelete }) {
       return dispatch({ type: "ADD_TO_CART", payload: product });
     }
   }
-
-  // toggling cart
-  function handleOutsideClick(e) {
-    if (e.target) {
-      setDropdownOpen(false);
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener("click", (e) => {
-      if (e.target !== menuRef.current && e.target !== optionRef.current) {
-        setDropdownOpen(false);
-      }
-    });
-
-    return () => {
-      window.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
 
   return (
     <div className="grid grid-cols-custom gap-x-[2.4rem] items-center px-5 py-3 border-b border-b-[#ABDFF1] hover:bg-[#ABDFF1] hover:rounded-md duration-300 ">
