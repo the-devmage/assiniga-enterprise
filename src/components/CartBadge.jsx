@@ -17,7 +17,7 @@ export default function CartBadge() {
     return () => {
       window.removeEventListener("click", handleOutsideClick);
     };
-  }, []);
+  });
 
   function handleToggle() {
     setOpenCart((openCart) => !openCart);

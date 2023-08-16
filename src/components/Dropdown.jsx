@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 
 export default function Dropdown({ children, id }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
   const menuRef = useRef();
 
   const toggleDropdown = (e, dropdownId) => {
