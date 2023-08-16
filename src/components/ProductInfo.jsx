@@ -12,7 +12,7 @@ export default function ProductInfo({ product, handleDelete }) {
   const [updateModalOpen, setUpdateModalOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const menuRef = useRef(false);
+  const menuRef = useRef();
   const optionRef = useRef(false);
 
   const { cart, dispatch } = useCart();
@@ -29,11 +29,11 @@ export default function ProductInfo({ product, handleDelete }) {
 
   // toggling cart
   function handleOutsideClick(e) {
-    if (e.target !== menuRef.current && e.target !== optionRef.current) {
+    if (e.target) {
       setDropdownOpen(false);
     }
   }
-  
+
   useEffect(() => {
     window.addEventListener("click", (e) => {
       if (e.target !== menuRef.current && e.target !== optionRef.current) {

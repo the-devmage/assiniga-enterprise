@@ -21,7 +21,7 @@ th {
   width: 6.4rem;
   aspect-ratio: 3 / 2;
   object-fit: cover;
-  object-position: center center;
+  object-position: center;
   transform: scale(1.2) translateX(-7px);
 }
 .product-img:hover {
